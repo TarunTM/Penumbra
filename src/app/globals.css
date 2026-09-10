@@ -1,0 +1,66 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-inter: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --canvas: #ffffff;
+  --foreground: #000000;
+  --secondary: #555454;
+  --muted: #666666;
+  --subtle: #888888;
+  --border: #ebebeb;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  background-color: var(--canvas);
+  color: var(--foreground);
+  font-family: var(--font-switzer), var(--font-inter), sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+
+/* Custom architectural cursor on pointer devices */
+@media (hover: hover) and (pointer: fine) {
+  body {
+    cursor: url('/branding/Penumbra%20Website%20Cursor.png') 16 16, auto;
+  }
+  a, button, [role="button"] {
+    cursor: pointer;
+  }
+}
+
+/* Selection aesthetics */
+::selection {
+  background: #000000;
+  color: #ffffff;
+}
+
+/* Smooth transition for accordion content */
+.accordion-enter {
+  opacity: 0;
+  transform: translateY(-4px);
+}
+.accordion-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 200ms ease, transform 200ms ease;
+}
+
+/* Hide scrollbars while allowing scroll */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
