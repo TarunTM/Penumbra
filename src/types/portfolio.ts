@@ -44,6 +44,7 @@ export interface HomeCuratedItem {
   slug: string;
   category: string;
   aspect: string;
+  aspectRatio?: string;
   priority?: boolean;
 }
 

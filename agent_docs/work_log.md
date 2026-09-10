@@ -251,6 +251,31 @@ All actions, architectural decisions, issues encountered, and attempted fixes ar
   - `npm run build` compiled all 36 static pages cleanly with exit code 0.
   - Server restarted and running live on `http://localhost:3000`.
 
+---
+
+### [Session 13] - Diagnosed and Resolved Home Page Image Visibility Issue
+- **Date / Time**: 2026-09-10
+- **User Request**: "I cannot see images in home page can you recheck"
+- **Root Cause Analysis**:
+  - In `src/app/page.tsx`, the image container was using dynamic template literal string interpolation: `className={`relative w-full ${item.aspect} overflow-hidden`}` where `item.aspect` was `"aspect-[455/724]"`, `"aspect-[455/348]"`, etc.
+  - Tailwind CSS relies on static source scanning and never extracts class names generated via runtime string concatenation or variables.
+  - Furthermore, `src/data` was missing from `tailwind.config.ts` content array.
+  - As a result, the arbitrary aspect ratio classes were completely missing from compiled CSS (`.next/static/css`), collapsing the container height to `0px`.
+  - Next.js `<Image fill>` rendered inside a 0-height container, causing all 19 image plates to collapse to 0 height and become invisible.
+- **Actions Taken**:
+  - Added native CSS `aspectRatio` styles directly on the containers:
+    - In `src/app/page.tsx`: added `getAspectRatio` parser and applied `style={{ aspectRatio: ratio }}` directly on the container.
+    - In `src/components/portfolio/ProjectDetailGallery.tsx`: replaced unsupported decimal aspect classes with `style={{ aspectRatio: "785 / 430" }}` and `style={{ aspectRatio: "379 / 278" }}`.
+  - Updated `tailwind.config.ts`: Added `"./src/data/**/*.{js,ts,jsx,tsx,mdx}"` to `content`.
+  - Added `aspectRatio?: string` to `HomeCuratedItem` in `src/types/portfolio.ts`.
+- **Verification**:
+  - Inspected generated `.next/server/app/index.html`: verified all 19 image containers have native `style="aspect-ratio:..."` and all 21 `<img>` tags are rendered.
+  - `npx tsc --noEmit` passed with 0 errors.
+  - `npm run build` passed with 0 errors across all 36 static routes.
+  - Server restarted and confirmed active on `http://localhost:3000`.
+  - Pushed fix commit to GitHub.
+
+
 
 
 

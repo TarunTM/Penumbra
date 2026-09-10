@@ -145,6 +145,11 @@ This document captures architectural learnings, completed milestones, pending it
   - Linked all 19 plates directly to their respective case study routes (`/works/[category]/[slug]`).
   - Pre-rendered all 36 static pages cleanly with zero build errors.
 
+- [x] Fixed Image Aspect-Ratio Container Sizing:
+  - Resolved issue where dynamic Tailwind classes (`aspect-[455/...]`) were not extracted at build time, causing image containers to collapse to 0 height.
+  - Implemented explicit native CSS `style={{ aspectRatio }}` on Home grid items and Project Detail gallery elements.
+  - Added `./src/data` to `tailwind.config.ts` content.
+
 #### Active in Phase 6:
 - [ ] Receive user review on overall site experience, typography, and navigation.
 - [ ] Ingest Personal Works & Projects (Crafts, Collections, Heritage, Textiles of Coastal Saurashtra, Kath Kuni) when requested.

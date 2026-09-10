@@ -86,13 +86,14 @@ function renderPhotoStack(
     const item = gallery[i];
 
     if (item.span === "full" || i === gallery.length - 1) {
-      // Full width image (785 x 430.4 in Figma)
+      // Full width image (785 x 430 in Figma Frame 30)
       const currentIndex = i;
       elements.push(
         <div
           key={`full-${currentIndex}`}
           onClick={() => onImageClick(currentIndex)}
-          className="relative w-full aspect-[785/430.4] bg-stone-100 overflow-hidden cursor-pointer group"
+          className="relative w-full bg-stone-100 overflow-hidden cursor-pointer group"
+          style={{ aspectRatio: "785 / 430" }}
         >
           <Image
             src={item.src}
@@ -106,7 +107,7 @@ function renderPhotoStack(
       );
       i += 1;
     } else {
-      // Two-up half-width images (378.5 x 277.6 each with 28px gap in Figma)
+      // Two-up half-width images (379 x 278 each with 28px gap in Figma Frame 30)
       const firstIndex = i;
       const secondIndex = i + 1;
       const secondItem = gallery[secondIndex];
@@ -118,7 +119,8 @@ function renderPhotoStack(
         >
           <div
             onClick={() => onImageClick(firstIndex)}
-            className="relative w-full aspect-[378.5/277.6] bg-stone-100 overflow-hidden cursor-pointer group"
+            className="relative w-full bg-stone-100 overflow-hidden cursor-pointer group"
+            style={{ aspectRatio: "379 / 278" }}
           >
             <Image
               src={item.src}
@@ -131,7 +133,8 @@ function renderPhotoStack(
           {secondItem && (
             <div
               onClick={() => onImageClick(secondIndex)}
-              className="relative w-full aspect-[378.5/277.6] bg-stone-100 overflow-hidden cursor-pointer group"
+              className="relative w-full bg-stone-100 overflow-hidden cursor-pointer group"
+              style={{ aspectRatio: "379 / 278" }}
             >
               <Image
                 src={secondItem.src}

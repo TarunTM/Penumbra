@@ -4,6 +4,15 @@ import Link from "next/link";
 import { homeLeftColumnImages, homeRightColumnImages } from "@/data/portfolioData";
 import { HomeCuratedItem } from "@/types/portfolio";
 
+function getAspectRatio(aspect?: string, fallback = "455 / 348"): string {
+  if (!aspect) return fallback;
+  const match = aspect.match(/aspect-\[(\d+)\/(\d+)\]/);
+  if (match) {
+    return `${match[1]} / ${match[2]}`;
+  }
+  return fallback;
+}
+
 export default function HomePage() {
   return (
     <div className="w-full pt-6 lg:pt-[72px] pb-24 max-w-[938px]">
@@ -28,13 +37,18 @@ export default function HomePage() {
 }
 
 function HomeGridItem({ item, priority = false }: { item: HomeCuratedItem; priority?: boolean }) {
+  const ratio = item.aspectRatio || getAspectRatio(item.aspect, "455 / 348");
+
   return (
     <Link
       href={`/works/${item.category}/${item.slug}`}
       title={`${item.projectTitle} (${item.studio})`}
-      className="group relative block w-full overflow-hidden bg-stone-100 cursor-pointer"
+      className="group relative block w-full overflow-hidden bg-[#f5f5f5] cursor-pointer"
     >
-      <div className={`relative w-full ${item.aspect} overflow-hidden`}>
+      <div
+        className="relative w-full overflow-hidden"
+        style={{ aspectRatio: ratio }}
+      >
         <Image
           src={item.src}
           alt={item.alt}
@@ -47,4 +61,5 @@ function HomeGridItem({ item, priority = false }: { item: HomeCuratedItem; prior
     </Link>
   );
 }
+
 
