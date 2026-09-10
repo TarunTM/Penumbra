@@ -275,6 +275,19 @@ All actions, architectural decisions, issues encountered, and attempted fixes ar
   - Server restarted and confirmed active on `http://localhost:3000`.
   - Pushed fix commit to GitHub.
 
+---
+
+### [Session 14] - Reverted to Previous Stable Version (Commit 1a2b48d)
+- **Date / Time**: 2026-09-10
+- **User Request**: "Switch Back to previous version you ruined the layout in this"
+- **Actions Taken**:
+  - Reverted git HEAD back to commit `1a2b48d` (`fix: resolve Home page and project gallery image container aspect-ratio collapse`).
+  - Restored exact layout and aspect-ratio geometry matching Figma specs (785x430 hero, 379x278 2-up pairs in project galleries, and the original 2-column editorial grid for Home).
+  - Cleaned and re-built Next.js production build (`npm run build`), compiling all 36 static routes cleanly with exit code 0.
+  - Restarted production server daemon on port 3000 (`http://localhost:3000`).
+  - Force pushed `origin/main` to restore GitHub remote repository to commit `1a2b48d`.
+
+
 
 
 
