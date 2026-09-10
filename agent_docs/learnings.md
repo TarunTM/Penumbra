@@ -139,6 +139,12 @@ This document captures architectural learnings, completed milestones, pending it
   - Linked to `git@github.com:TarunTM/Penumbra.git`.
   - Successfully committed and pushed all 925 files to branch `main`.
 
+- [x] Expanded Home Page Editorial Grid (All 19 Projects):
+  - Featured one curated photograph from every single project created so far.
+  - Preserved 2-column asymmetric editorial monograph rhythm from Figma Frame 17.
+  - Linked all 19 plates directly to their respective case study routes (`/works/[category]/[slug]`).
+  - Pre-rendered all 36 static pages cleanly with zero build errors.
+
 #### Active in Phase 6:
 - [ ] Receive user review on overall site experience, typography, and navigation.
 - [ ] Ingest Personal Works & Projects (Crafts, Collections, Heritage, Textiles of Coastal Saurashtra, Kath Kuni) when requested.

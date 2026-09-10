@@ -34,3 +34,16 @@ export interface NavAccordionGroup {
   links: NavSubLink[];
   defaultOpen?: boolean;
 }
+
+export interface HomeCuratedItem {
+  id: string;
+  src: string;
+  alt: string;
+  projectTitle: string;
+  studio: string;
+  slug: string;
+  category: string;
+  aspect: string;
+  priority?: boolean;
+}
+

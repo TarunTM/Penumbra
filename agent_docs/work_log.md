@@ -230,6 +230,28 @@ All actions, architectural decisions, issues encountered, and attempted fixes ar
   - `git push -u origin main` succeeded with exit code 0 (`83fc1f7..0293cf6 main -> main`).
   - Remote repository active and verified at `https://github.com/TarunTM/Penumbra`.
 
+---
+
+### [Session 12] - Expanded Home Page Editorial Grid to All 19 Projects
+- **Date / Time**: 2026-09-10
+- **User Request**: "Just Add Some images in the same layout that is in design file , Link it to the projects that are made till now, take one image from each project and use it in home page to link to the project"
+- **Actions Taken**:
+  - Created and got user approval on implementation plan (`implementation_plan.md`).
+  - Exported `HomeCuratedItem` interface in `src/types/portfolio.ts`.
+  - Updated `src/data/portfolioData.ts`:
+    - Curated exactly one representative photograph from all 19 projects (3 Architecture, 12 Interiors, 4 Objects).
+    - Balanced visual weight and alternating portrait/landscape cadence across `homeLeftColumnImages` (10 items) and `homeRightColumnImages` (9 items).
+    - Retained initial top plates from Figma Home Frame 17 (White Mongoose portrait on left, Temple Tree Resort landscape on right).
+    - Linked every plate directly to `/works/[category]/[slug]`.
+  - Updated `src/app/page.tsx`:
+    - Rendered the full 19-plate collection using the 2-column staggered layout with 28px gap.
+    - Set priority loading for top two images to ensure instant First Contentful Paint.
+- **Verification**:
+  - `npx tsc --noEmit` passed with 0 errors.
+  - `npm run build` compiled all 36 static pages cleanly with exit code 0.
+  - Server restarted and running live on `http://localhost:3000`.
+
+
 
 
 
