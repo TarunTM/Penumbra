@@ -214,6 +214,23 @@ All actions, architectural decisions, issues encountered, and attempted fixes ar
   - `npm run build` regenerated all 36 static pages with exit code 0.
   - Daemon server restarted and verified live on `http://localhost:3000`.
 
+---
+
+### [Session 11] - Git Initialization & Remote Push to GitHub
+- **Date / Time**: 2026-09-10
+- **User Request**: "https://github.com/TarunTM/Penumbra.git - push to github"
+- **Actions Taken**:
+  - Created `.gitignore` ignoring `node_modules/`, `.next/`, `build/`, `.DS_Store`, `tsconfig.tsbuildinfo`, and `Extras/` (avoiding oversized 112MB video file).
+  - Initialized git repository on branch `main`.
+  - Added remote `git@github.com:TarunTM/Penumbra.git` with verified SSH authentication.
+  - Rebased/integrated initial GitHub commit containing `README.md`.
+  - Staged and committed 925 files covering complete Next.js portfolio source, design assets, and optimized WebP images.
+  - Pushed branch `main` to `origin/main` successfully.
+- **Verification**:
+  - `git push -u origin main` succeeded with exit code 0 (`83fc1f7..0293cf6 main -> main`).
+  - Remote repository active and verified at `https://github.com/TarunTM/Penumbra`.
+
+
 
 
 

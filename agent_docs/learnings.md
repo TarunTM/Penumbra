@@ -134,6 +134,11 @@ This document captures architectural learnings, completed milestones, pending it
   - Updated social link target to `https://www.instagram.com/penumbra.ppl/`.
   - Re-compiled and verified production server.
 
+- [x] GitHub Repository Push:
+  - Configured git repository with `.gitignore`.
+  - Linked to `git@github.com:TarunTM/Penumbra.git`.
+  - Successfully committed and pushed all 925 files to branch `main`.
+
 #### Active in Phase 6:
 - [ ] Receive user review on overall site experience, typography, and navigation.
 - [ ] Ingest Personal Works & Projects (Crafts, Collections, Heritage, Textiles of Coastal Saurashtra, Kath Kuni) when requested.
