@@ -150,6 +150,14 @@ This document captures architectural learnings, completed milestones, pending it
   - Implemented explicit native CSS `style={{ aspectRatio }}` on Home grid items and Project Detail gallery elements.
   - Added `./src/data` to `tailwind.config.ts` content.
 
+- [x] Interactive Sidebar Navigation Accordion Plus (+) / Minus (-) Icons:
+  - Implemented dynamic state-dependent toggle icons matching Figma Component 1 (`1000:1220`):
+    - Closed state: crisp `+` icon (9.33x9.33 vector inside 16x16 frame).
+    - Open state: crisp `-` dash icon (9.33x1.33 vector inside 16x16 frame).
+    - Smooth 200ms transition between open and closed states.
+    - Added auto-open expansion when viewing active child routes.
+    - Matched child list indentation to Figma Frame 4 (`pl-[28px]`).
+
 #### Active in Phase 6:
 - [ ] Receive user review on overall site experience, typography, and navigation.
 - [ ] Ingest Personal Works & Projects (Crafts, Collections, Heritage, Textiles of Coastal Saurashtra, Kath Kuni) when requested.

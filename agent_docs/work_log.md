@@ -287,6 +287,31 @@ All actions, architectural decisions, issues encountered, and attempted fixes ar
   - Restarted production server daemon on port 3000 (`http://localhost:3000`).
   - Force pushed `origin/main` to restore GitHub remote repository to commit `1a2b48d`.
 
+---
+
+### [Session 15] - Accordion Plus (+) / Minus (-) Navigation Icons
+- **Date / Time**: 2026-09-10
+- **User Request**: "If you see the side nav bar , when projects are closed it has + icon , if its open there is - icon"
+- **Investigation**:
+  - Queried Figma component set `Component 1` (`1000:1220`):
+    - Closed state (`Heading Accordian` / `1000:1221`): 16x16 frame `Add Icon` containing 9.33x9.33 vector (`+` icon) with 4px gap to title.
+    - Open state (`Dropdown accordian` / `1000:1225`): 16x16 frame containing 9.33x1.33 vector (`-` dash icon).
+    - Child links list `Frame 4` (`1000:1230`): `paddingLeft: 28px`.
+- **Actions Taken**:
+  - Updated `src/components/sidebar/NavAccordion.tsx`:
+    - Replaced static dash with dynamic `+` and `-` state indicator:
+      - 16x16 container with 4px gap (`gap-1`) to title.
+      - Horizontal bar (`9.33px x 1.33px`) always present.
+      - Vertical bar (`1.33px x 9.33px`) visible when closed (`+`), smoothly scales down and rotates when opened (`-`).
+    - Added auto-open detection if the current URL route matches any link within the group.
+    - Adjusted nested links list indentation to `pl-[28px]` matching Figma Frame 4.
+- **Verification**:
+  - Verified 100% strict ASCII character encoding.
+  - `npx tsc --noEmit` passed with 0 errors.
+  - `npm run build` compiled all 36 static routes with 0 errors.
+  - Restarted production daemon on port 3000 (`http://localhost:3000`).
+
+
 
 
 
